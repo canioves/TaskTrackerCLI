@@ -21,7 +21,7 @@ namespace CLI.Repository
 
         public IEnumerable<Task> GetAll() => tasks;
 
-        public Task GetById(int id) => tasks.FirstOrDefault(x => x.Id == id);
+        public Task? GetById(int id) => tasks.FirstOrDefault(x => x.Id == id);
 
         public void Update(Task task)
         {
