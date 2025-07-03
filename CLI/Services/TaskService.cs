@@ -16,5 +16,13 @@ namespace CLI.Services
             Task task = new Task { Title = title, Description = description };
             repository.Add(task);
         }
+
+        public void UpdateTask(Task task) => repository.Update(task);
+
+        public void DeleteTask(int id) => repository.Delete(id);
+
+        public Task GetTaskById(int id) => repository.GetById(id);
+
+        public IEnumerable<Task> GetAllTasks() => repository.GetAll();
     }
 }

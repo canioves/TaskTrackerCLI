@@ -13,22 +13,26 @@ namespace CLI.Repository
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Task? existingTask = tasks.FirstOrDefault(x => x.Id == id);
+
+            if (existingTask != null)
+                tasks.Remove(existingTask);
         }
 
-        public IEnumerable<Task> GetAll()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<Task> GetAll() => tasks;
 
-        public Task GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public Task GetById(int id) => tasks.FirstOrDefault(x => x.Id == id);
 
         public void Update(Task task)
         {
-            throw new NotImplementedException();
+            Task? existingTask = tasks.FirstOrDefault(x => x.Id == task.Id);
+            if (existingTask != null)
+            {
+                existingTask.Title = task.Title;
+                existingTask.Description = task.Description;
+                existingTask.IsCompleted = task.IsCompleted;
+                existingTask.UpdatedAt = DateTime.UtcNow;
+            }
         }
     }
 }
