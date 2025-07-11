@@ -9,7 +9,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        IRepository repository = new InMemoryRepository();
+        IRepository repository = new JsonRepository(@"Data\tasks.json");
         TaskService taskService = new TaskService(repository);
         ConsoleView view = new ConsoleView();
         TaskController taskController = new TaskController(taskService, view);
