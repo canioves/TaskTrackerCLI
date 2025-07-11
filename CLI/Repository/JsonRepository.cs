@@ -1,4 +1,5 @@
 using System.Text.Json;
+using CLI.Serialization;
 
 namespace CLI.Repository
 {
@@ -7,7 +8,6 @@ namespace CLI.Repository
         private readonly string fullPath;
         private List<Task> tasks;
         private int nextId;
-
         public JsonRepository(string filePath)
         {
             fullPath = MakeFullPath(filePath);
@@ -28,7 +28,7 @@ namespace CLI.Repository
             if (File.Exists(fullPath))
             {
                 string json = File.ReadAllText(fullPath);
-                tasks = JsonSerializer.Deserialize<List<Task>>(json) ?? [];
+                tasks = JsonSerializer.Deserialize<List<Task>>(json, JsonOptions.Default) ?? [];
             }
             else
             {
@@ -38,7 +38,7 @@ namespace CLI.Repository
 
         private void SaveTasks()
         {
-            string json = JsonSerializer.Serialize(tasks);
+            string json = JsonSerializer.Serialize(tasks, JsonOptions.Default);
             File.WriteAllText(fullPath, json);
         }
 
