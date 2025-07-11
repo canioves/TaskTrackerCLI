@@ -13,24 +13,24 @@ namespace CLI.Repository
 
         public void Delete(int id)
         {
-            Task? existingTask = tasks.FirstOrDefault(x => x.Id == id);
+            Task existingTask = tasks.FirstOrDefault(x => x.Id == id);
 
-            if (existingTask != null)
+            if (existingTask is not null)
                 tasks.Remove(existingTask);
         }
 
         public IEnumerable<Task> GetAll() => tasks;
 
-        public Task? GetById(int id) => tasks.FirstOrDefault(x => x.Id == id);
+        public Task GetById(int id) => tasks.FirstOrDefault(x => x.Id == id);
 
         public void Update(Task task)
         {
-            Task? existingTask = tasks.FirstOrDefault(x => x.Id == task.Id);
-            if (existingTask != null)
+            Task existingTask = tasks.FirstOrDefault(x => x.Id == task.Id);
+            if (existingTask is not null)
             {
                 existingTask.Title = task.Title;
                 existingTask.Description = task.Description;
-                existingTask.IsCompleted = task.IsCompleted;
+                existingTask.Status = task.Status;
                 existingTask.UpdatedAt = DateTime.UtcNow;
             }
         }

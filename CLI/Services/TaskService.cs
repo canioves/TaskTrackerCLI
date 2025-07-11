@@ -21,7 +21,7 @@ namespace CLI.Services
 
         public void DeleteTask(int id) => repository.Delete(id);
 
-        public Task? GetTaskById(int id) => repository.GetById(id);
+        public Task GetTaskById(int id) => repository.GetById(id);
 
         public IEnumerable<Task> GetAllTasks() => repository.GetAll();
     }

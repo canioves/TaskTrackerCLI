@@ -1,9 +1,19 @@
-﻿namespace CLI;
+﻿using CLI.Controllers;
+using CLI.Repository;
+using CLI.Services;
+using CLI.Views;
+
+namespace CLI;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        IRepository repository = new InMemoryRepository();
+        TaskService taskService = new TaskService(repository);
+        ConsoleView view = new ConsoleView();
+        TaskController taskController = new TaskController(taskService, view);
+
+        taskController.Run();
     }
 }
