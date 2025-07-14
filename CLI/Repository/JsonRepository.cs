@@ -73,6 +73,7 @@ namespace CLI.Repository
                 existingTask.Status = task.Status;
                 existingTask.UpdatedAt = DateTime.UtcNow;
             }
+            SaveTasks();
         }
     }
 }

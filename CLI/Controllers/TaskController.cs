@@ -34,7 +34,7 @@ namespace CLI.Controllers
                         if (existingTask != null)
                         {
                             Task updatedTask = view.ShowTaskUpdateDetailsMenu();
-                            
+
                             existingTask.Title = string.IsNullOrEmpty(updatedTask.Title)
                                 ? existingTask.Title
                                 : updatedTask.Title;
