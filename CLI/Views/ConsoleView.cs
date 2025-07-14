@@ -60,6 +60,7 @@ namespace CLI.Views
                 Console.WriteLine($"Description: {task.Description}");
                 Console.WriteLine($"Status: {task.Status}");
                 Console.WriteLine($"Created At: {task.CreatedAt}");
+                Console.WriteLine("--------------------------------");
 
                 if (task.UpdatedAt is not null)
                 {
