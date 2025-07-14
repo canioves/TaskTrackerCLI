@@ -34,9 +34,15 @@ namespace CLI.Controllers
                         if (existingTask != null)
                         {
                             Task updatedTask = view.ShowTaskUpdateDetailsMenu();
-                            existingTask.Title = updatedTask.Title;
-                            existingTask.Description = updatedTask.Description;
+                            
+                            existingTask.Title = string.IsNullOrEmpty(updatedTask.Title)
+                                ? existingTask.Title
+                                : updatedTask.Title;
+                            existingTask.Description = string.IsNullOrEmpty(updatedTask.Description)
+                                ? existingTask.Description
+                                : updatedTask.Description;
                             existingTask.Status = updatedTask.Status;
+
                             service.UpdateTask(existingTask);
                             view.ShowMessage("Task is updated!");
                         }

@@ -25,9 +25,9 @@ namespace CLI.Views
 
         public Task ShowTaskUpdateDetailsMenu()
         {
-            Console.WriteLine("Enter task title: ");
+            Console.WriteLine("Enter task title or press Enter to continue: ");
             string title = Console.ReadLine();
-            Console.WriteLine("Enter task description: ");
+            Console.WriteLine("Enter task description  or press Enter to continue: ");
             string description = Console.ReadLine();
 
             Console.WriteLine("Pick status:");
@@ -55,9 +55,10 @@ namespace CLI.Views
         {
             foreach (Task task in tasks)
             {
-                Console.WriteLine($"[{task.Id}] - {task.Title}");
-                Console.WriteLine($"Status - {task.Status}");
+                Console.WriteLine($"ID: {task.Id}");
+                Console.WriteLine($"Title: {task.Title}");
                 Console.WriteLine($"Description: {task.Description}");
+                Console.WriteLine($"Status: {task.Status}");
                 Console.WriteLine($"Created At: {task.CreatedAt}");
 
                 if (task.UpdatedAt is not null)

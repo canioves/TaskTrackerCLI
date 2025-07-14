@@ -13,6 +13,7 @@ namespace CLI.Serialization
                 ReadCommentHandling = JsonCommentHandling.Skip,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
                 Converters = { new JsonStringEnumConverter() },
+                WriteIndented = true,
             };
     }
 }
